@@ -1,0 +1,49 @@
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+<style type="text/class"  >
+    #tabela_carros {
+        background-color: #ff5fab
+    }
+
+</style>
+
+     {% extends 'carros/base.html' %}
+     {% block content %}
+
+{% if carros %}
+
+        <table id ="tabela_carros" class="table table-dark">
+
+          <thead>
+            <tr>
+              <th scope="col">Indice</th>
+              <th scope="col">Nome do Carro </th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+              {% for carro in carros %}
+                  <tr>
+                     <th> {{forloop.counter}} </th>
+                   <th scope="row">
+                     <a href="/{{carro.id}}" >
+                          {{carro.name}}
+                     </a>
+                   </th>
+                  </tr>
+              {% endfor %}
+
+          </tbody>
+        </table>
+
+{% else %}
+
+    <h3> Nenhum carro cadastrado</h3>
+
+{%endif%}
+
+
+{% endblock %}
+
